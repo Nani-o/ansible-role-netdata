@@ -1,0 +1,25 @@
+---
+- name: Création du dossier git
+  file:
+    path: /git
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - netdata_install
+
+- name: Checkout du repo git
+  git:
+    repo: https://github.com/firehol/netdata.git
+    dest: /git/netdata
+    depth: 1
+  register: git_update
+  tags:
+    - netdata_install
+
+- name: Installation de netdata
+  shell: "cd /git/netdata/ && ./netdata-installer.sh --dont-wait --libs-are-really-here"
+  when: git_update.changed
+  tags:
+    - netdata_install

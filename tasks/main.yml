@@ -1,0 +1,8 @@
+---
+# Installation des packages requis
+
+- include: packages.yml
+
+# Installation de netdata
+
+- include: netdata.yml
