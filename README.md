@@ -1,12 +1,21 @@
-Role Name
-=========
+[![Build Status](https://travis-ci.org/Nani-o/ansible-role-netdata.svg?branch=master)](https://travis-ci.org/Nani-o/ansible-role-netdata)
 
-A brief description of the role goes here.
+netdata
+=======
 
-Requirements
-------------
+A simple role for installing [netdata](https://github.com/firehol/netdata) by [firehol](https://github.com/firehol).
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Compatibility
+-------------
+
+  - CentOS 6
+  - CentOS 7
+  - Ubuntu 12.04
+  - Ubuntu 14.04
+  - Ubuntu 16.04
+  - Debian 7
+  - Debian 8
+  - Debian 9
 
 Role Variables
 --------------
@@ -25,14 +34,14 @@ Including an example of how to use your role (for instance, with variables passe
 
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+         - { role: ansible-role-netdata }
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+Sofiane MEDJKOUNE

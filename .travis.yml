@@ -1,29 +1,27 @@
 ---
+dist: trusty
 language: python
 python: "2.7"
 
-# Use the new container infrastructure
-sudo: false
+sudo: true
 
-# Install ansible
-addons:
-  apt:
-    packages:
-    - python-pip
+env:
+  - lxd_container_alias: centos/7/amd64
+  - lxd_container_alias: centos/6/amd64
+  - lxd_container_alias: ubuntu/xenial/amd64
+  - lxd_container_alias: ubuntu/trusty/amd64
+  - lxd_container_alias: debian/stretch/amd64
+  - lxd_container_alias: debian/jessie/amd64
+  - lxd_container_alias: debian/wheezy/amd64
 
 install:
-  # Install ansible
-  - pip install ansible
-
-  # Check ansible version
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
+  # Installing latest ansible
+  - sudo -H pip install ansible
+  # Cloning testing template
+  - sudo mkdir /etc/ansible
+  - sudo chown -R "${USER}:" /etc/ansible
+  - git clone https://github.com/Nani-o/ansible-template-role-test /etc/ansible
 
 script:
-  # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-
-notifications:
-  webhooks: https://galaxy.ansible.com/api/v1/notifications/
+  # Run tests
+  - bash /etc/ansible/test.sh
