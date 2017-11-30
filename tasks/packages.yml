@@ -1,26 +1,13 @@
 ---
-- name: Installation du repository epel
-  yum:
-    name: epel-release
-    state: latest
+- name: Add epel repository
+  yum_repository:
+    name: epel
+    description: EPEL YUM repo
+    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
+    gpgkey: https://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-$releasever
   when: ansible_distribution == "CentOS"
-  tags:
-    - pkgs
-
-- name: Installation des packages requis
-  yum:
-    name: "{{ item }}"
+    
+- name: Install packages
+  package:
+    name: "{{ netdata_pkgs }}"
     state: latest
-  with_items: "{{ netdata_pkgs_yum }}"
-  when: ansible_distribution == "CentOS"
-  tags:
-    - pkgs
-
-- name: Installation des packages requis
-  apt:
-    name: "{{ item }}"
-    state: latest
-  with_items: "{{ netdata_pkgs_apt }}"
-  when: ansible_distribution == "Debian" or ansible_distribution == "Ubuntu"
-  tags:
-    - pkgs

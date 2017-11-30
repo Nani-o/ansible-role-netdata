@@ -1,0 +1,19 @@
+---
+netdata_pkgs:
+  - autoconf
+  - automake
+  - ca-certificates
+  - curl
+  - gcc
+  - git
+  - libmnl-devel
+  - libuuid-devel
+  - lm_sensors
+  - make
+  - MySQL-python
+  - nc
+  - pkgconfig
+  - python
+  - python-psycopg2
+  - PyYAML
+  - zlib-devel
