@@ -11,3 +11,4 @@
   package:
     name: "{{ netdata_pkgs }}"
     state: latest
+  notify: restart netdata
