@@ -1,12 +1,12 @@
 ---
 - hosts: container
   tasks:
-    - name: Check Jackett Dashboard
+    - name: Check Netdata Dashboard
       uri:
         url: http://localhost:19999
         return_content: yes
       register: webpage
 
-    - name: Fail if not Jackett in webpage
+    - name: Fail if not Netdata in webpage
       fail:
       when: "'<title>netdata dashboard</title>' not in webpage.content"
