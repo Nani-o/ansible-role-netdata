@@ -4,15 +4,19 @@
   include_vars: "{{ ansible_os_family }}.yml"
   tags:
     - netdata
+    - netdata_requirements
+    - netdata_install
 
 # Install required packages
 - import_tasks: packages.yml
+  notify: restart netdata
   tags:
     - netdata
     - netdata_requirements
 
 # Install netdata
 - import_tasks: netdata.yml
+  notify: restart netdata
   tags:
     - netdata
     - netdata_install
