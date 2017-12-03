@@ -17,3 +17,9 @@
 - name: Installation de netdata
   shell: "cd /git/netdata/ && ./netdata-installer.sh --dont-wait --libs-are-really-here"
   when: git_update.changed
+
+- name: Déploiement de la configuration
+  template:
+    src: netdata.conf.j2
+    dest: /etc/netdata/netdata.conf
+  when: "netdata_config is defined"
