@@ -1,20 +1,19 @@
 ---
-- block:
-  - name: Checkout git repo
-    git:
-      repo: https://github.com/firehol/netdata.git
-      dest: /usr/local/src/netdata
-      depth: 1
-    register: git_update
+- name: Checkout git repo
+  git:
+    repo: https://github.com/firehol/netdata.git
+    dest: /usr/local/src/netdata
+    depth: 1
+  register: git_update
 
-  - name: Install netdata
-    shell: "cd /usr/local/src/netdata/ && ./netdata-installer.sh --dont-wait --libs-are-really-here"
-    when: git_update.changed
+- name: Install netdata
+  shell: "cd /usr/local/src/netdata/ && ./netdata-installer.sh --dont-wait --libs-are-really-here"
+  when: git_update.changed
+  notify: restart netdata
 
-  - name: Deploy config
-    template:
-      src: netdata.conf.j2
-      dest: /etc/netdata/netdata.conf
-    when: "netdata_config is defined"
-
+- name: Deploy config
+  template:
+    src: netdata.conf.j2
+    dest: /etc/netdata/netdata.conf
+  when: "netdata_config is defined"
   notify: restart netdata
