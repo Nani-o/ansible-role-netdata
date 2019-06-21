@@ -3,7 +3,7 @@
 netdata
 =======
 
-A simple role for installing [netdata](https://github.com/firehol/netdata) by [firehol](https://github.com/firehol).
+A simple role for installing [netdata](https://github.com/netdata/netdata).
 
 Compatibility
 -------------
