@@ -5,6 +5,7 @@
     description: EPEL YUM repo
     baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
     gpgkey: https://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-$releasever
+  when: ansible_distribution == "CentOS"
 
 - name: Install packages
   package:
