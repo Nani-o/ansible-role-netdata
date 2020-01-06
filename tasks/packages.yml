@@ -1,12 +1,9 @@
 ---
 - name: Add epel repository
-  yum_repository:
-    name: "{{ item.name }}"
-    description: "{{ item.description }}"
-    baseurl: "{{ item.baseurl }}"
-    gpgkey: "{{ item.gpgkey }}"
+  yum:
+    name: "{{ netdata_yum_repos }}"
+    state: latest
   when: ansible_distribution == "CentOS"
-  loop: "{{ netdata_yum_repos }}"
 
 - name: Install packages
   package:
