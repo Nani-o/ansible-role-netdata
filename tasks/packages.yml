@@ -1,14 +1,16 @@
 ---
 - name: Add epel repository
   yum_repository:
-    name: epel
-    description: EPEL YUM repo
-    baseurl: https://download.fedoraproject.org/pub/epel/$releasever/$basearch/
-    gpgkey: https://download.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-$releasever
+    name: "{{ item.name }}"
+    description: "{{ item.description }}"
+    baseurl: "{{ item.baseurl }}"
+    gpgkey: "{{ item.gpgkey }}"
   when: ansible_distribution == "CentOS"
-    
+  loop: "{{ netdata_yum_repos }}"
+
 - name: Install packages
   package:
     name: "{{ netdata_pkgs }}"
     state: latest
   notify: restart netdata
+...

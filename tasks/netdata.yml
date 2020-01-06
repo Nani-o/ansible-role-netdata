@@ -17,3 +17,4 @@
     dest: /etc/netdata/netdata.conf
   when: "netdata_config is defined"
   notify: restart netdata
+...
