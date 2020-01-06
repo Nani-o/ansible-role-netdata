@@ -24,5 +24,5 @@ netdata_pkgs:
 
 netdata_yum_repos:
   - epel-release
-  - "http://repo.okay.com.mx/centos/{{ ansible_distribution_major_version }}/x86_64/release/okay-release-1-3.el{{ ansible_distribution_major_version }}.noarch.rpm?"
+#  - "http://repo.okay.com.mx/centos/{{ ansible_distribution_major_version }}/x86_64/release/okay-release-1-3.el{{ ansible_distribution_major_version }}.noarch.rpm?"
 ...
