@@ -7,7 +7,7 @@
   register: git_update
 
 - name: Install netdata
-  shell: "cd /usr/local/src/netdata/ && ./netdata-installer.sh --dont-wait --libs-are-really-here"
+  shell: "cd /usr/local/src/netdata/ && ./netdata-installer.sh --dont-wait --libs-are-really-here --stable-channel"
   when: git_update.changed
   notify: restart netdata
 
